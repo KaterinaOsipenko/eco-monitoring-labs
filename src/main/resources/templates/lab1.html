@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab1</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container py-3 my-3">
+    <p class="align-content-center" style="text-align: center">Основні об'єкти-забруднювачі в Київській області за 2020
+        рік</p>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>№ з/п</th>
+            <th>Назва об'єкту</th>
+            <th>Назва забруднюючої речовини</th>
+            <th>Об'єм викидів забруднюючої речовини</th>
+            <th>Гранично допустимі викиди, мг/м3</th>
+            <th>Заходи спрямовані на зменшення об'єму викидів шкідливих речовин</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="obj : ${objectsProd}">
+            <td th:text="${obj.id}"></td>
+            <td th:text="${obj.name}"></td>
+            <td th:text="${obj.substance.name}"></td>
+            <div th:if="${obj.value_pollution} > ${obj.substance.gdk.max_gdk}">
+                <td class="bg-danger" th:text="${obj.value_pollution}"></td>
+            </div>
+            <div th:unless="${obj.value_pollution} > ${obj.substance.gdk.max_gdk}">
+                <td class="bg-success" th:text="${obj.value_pollution}"></td>
+            </div>
+            <td th:text="${obj.substance.gdk.max_gdk}"></td>
+            <td th:text="${obj.events_for_reduction_pollution}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
