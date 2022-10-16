@@ -36,7 +36,7 @@ html {
     font-size: 2rem;
 }
 
-.btn-lab1 {
+.btn-lab1, .btn-lab2 {
     padding: .5rem;
     margin-left: 20rem;
     width: 40%;

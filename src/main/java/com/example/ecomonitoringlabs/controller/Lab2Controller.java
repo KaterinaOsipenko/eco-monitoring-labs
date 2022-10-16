@@ -1,6 +1,6 @@
 package com.example.ecomonitoringlabs.controller;
 
-import com.example.ecomonitoringlabs.service.ObjectProductionService;
+import com.example.ecomonitoringlabs.service.ObjectTaxService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Log4j2
-@RequestMapping("/lab1")
-public class Lab1Controller {
+@RequestMapping("/lab2")
+public class Lab2Controller {
 
     @Autowired
-    private ObjectProductionService productionService;
+    private ObjectTaxService objectTaxService;
 
     @GetMapping("/list")
-    public String getListOfObjects(Model model) {
-        log.info("Lab1Controller: get request");
-        model.addAttribute("objectsProd", productionService.findAll());
-        return "lab1";
+    public String getTaxesForObjects(Model model) {
+        log.info("La21Controller: get request");
+        model.addAttribute("objectsTax", objectTaxService.findAll());
+        return "lab2";
     }
 }

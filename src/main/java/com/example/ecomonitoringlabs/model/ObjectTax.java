@@ -6,27 +6,27 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "OBJECTS_LAB1")
-@Setter
 @Getter
-public class ObjectProduction {
+@Setter
+@Table(name = "OBJECTS_LAB2")
+public class ObjectTax {
 
     @Id
     private int id;
+
     @ManyToOne
     @JoinColumn(name = "id_object", nullable = false)
     private ObjectFactory object;
+
     @ManyToOne
     @JoinColumn(name = "id_substance", nullable = false)
     private Substance substance;
 
-    private double value_pollution;
+    private double amount_of_emissions;
 
-    private int factorError;
+    private double tax_rates_for_emissions;
 
-    private String events_for_reduction_pollution;
+    private float tax_amount;
 
     private int year;
-
-
 }

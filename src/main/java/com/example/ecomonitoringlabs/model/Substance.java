@@ -19,6 +19,9 @@ public class Substance {
     @OneToMany(mappedBy = "substance")
     private List<ObjectProduction> production;
 
+    @OneToMany(mappedBy = "substance")
+    private List<ObjectTax> taxes;
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "substance")
     private OBRD obrd;
 
