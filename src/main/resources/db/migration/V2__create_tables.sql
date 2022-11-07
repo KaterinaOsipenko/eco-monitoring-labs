@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS SUBSTANCE
 (
     id   INT PRIMARY KEY,
-    name VARCHAR(40)
+    name VARCHAR(40) not null
 );
 
 CREATE TABLE IF NOT EXISTS GDK
@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS GDK
     avg_gdk         DOUBLE,
     dangerous_class INT,
     FOREIGN KEY (id_substance) REFERENCES SUBSTANCE (id)
+        ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF not exists OBRD
@@ -20,6 +21,7 @@ CREATE TABLE IF not exists OBRD
     id_substance INT,
     obrd_value   DOUBLE,
     FOREIGN KEY (id_substance) REFERENCES SUBSTANCE (id)
+        ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS OBJECTS
@@ -41,6 +43,7 @@ CREATE TABLE if not exists OBJECTS_LAB1
         REFERENCES Substance (id),
     foreign key (id_object)
         REFERENCES OBJECTS (id)
+        ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS OBJECTS_LAB2
@@ -56,4 +59,54 @@ CREATE TABLE IF NOT EXISTS OBJECTS_LAB2
         REFERENCES Substance (id),
     foreign key (id_object)
         REFERENCES OBJECTS (id)
+        ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS SFI
+(
+    id           INT PRIMARY KEY AUTO_INCREMENT,
+    id_substance INT,
+    sfi          DOUBLE,
+    FOREIGN KEY (id_substance) REFERENCES SUBSTANCE (id)
+        ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS RFC
+(
+    id           INT PRIMARY KEY AUTO_INCREMENT,
+    id_substance INT,
+    rfc          DOUBLE,
+    FOREIGN KEY (id_substance) REFERENCES SUBSTANCE (id)
+        ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS OBJECTS_LAB3_KONCEROGEN
+(
+    id            INT AUTO_INCREMENT PRIMARY KEY,
+    id_object     INT,
+    id_substance  INT,
+    concentration DOUBLE,
+    PCR           DOUBLE DEFAULT 0,
+    year          INT    DEFAULT 2020,
+    FOREIGN KEY (id_substance)
+        REFERENCES SUBSTANCE (id),
+    FOREIGN KEY (id_object)
+        REFERENCES OBJECTS (id)
+        ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS OBJ_LAB3_NOT_KONCEROGEN
+(
+    id            INT AUTO_INCREMENT PRIMARY KEY,
+    id_object     INT,
+    id_substance  INT,
+    concentration DOUBLE,
+    HQ            DOUBLE DEFAULT 0,
+    year          INT    DEFAULT 2020,
+    FOREIGN KEY (id_substance)
+        REFERENCES SUBSTANCE (id),
+    FOREIGN KEY (id_object)
+        REFERENCES OBJECTS (id)
+        ON UPDATE CASCADE ON DELETE CASCADE
 );

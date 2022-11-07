@@ -28,15 +28,12 @@
             <td th:text="${obj.substance.name}"></td>
             <div th:if="${obj.amount_of_emissions} > ${obj.substance.gdk.max_gdk}">
                 <td class="bg-danger" th:text="${obj.amount_of_emissions}"></td>
-                <td th:text="${obj.tax_rates_for_emissions}"></td>
-                <td th:text="${obj.tax_amount}"></td>
             </div>
             <div th:unless="${obj.amount_of_emissions} > ${obj.substance.gdk.max_gdk}">
                 <td class="bg-success" th:text="${obj.amount_of_emissions}"></td>
-                <td th:text="${obj.tax_rates_for_emissions}"></td>
-                <td th:text="'-'"></td>
             </div>
-
+            <td th:text="${obj.tax_rates_for_emissions}"></td>
+            <td th:text="${obj.tax_amount}"></td>
         </tr>
         </tbody>
     </table>

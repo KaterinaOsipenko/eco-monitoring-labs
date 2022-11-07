@@ -25,4 +25,10 @@ public class ObjectFactory {
 
     @OneToMany(mappedBy = "object")
     private List<ObjectTax> taxes;
+
+    @OneToMany(mappedBy = "object")
+    private List<Object_Koncerogen> object_koncerogens;
+
+    @OneToMany(mappedBy = "object")
+    private List<Object_Not_Koncerogen> object_not_koncerogens;
 }

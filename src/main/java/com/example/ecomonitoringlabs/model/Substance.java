@@ -16,6 +16,12 @@ public class Substance {
 
     private String name;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "substance")
+    private SFI sfi;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "substance")
+    private RFC rfc;
+
     @OneToMany(mappedBy = "substance")
     private List<ObjectProduction> production;
 
@@ -27,4 +33,12 @@ public class Substance {
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "substance")
     private GDK gdk;
+
+    @OneToMany(mappedBy = "substance")
+    private List<Object_Not_Koncerogen> object_not_koncerogens;
+
+    @OneToMany(mappedBy = "substance")
+    private List<Object_Koncerogen> object_koncerogen;
+
+
 }

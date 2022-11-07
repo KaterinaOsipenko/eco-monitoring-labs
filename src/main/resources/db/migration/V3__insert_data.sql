@@ -1,6 +1,4 @@
-USE lab1;
-
-INSERT INTO SUBSTANCE
+INSERT INTO SUBSTANCE (`id`, `name`)
 VALUES (410, 'Метан'),
        (304, 'Азот діоксид'),
        (343, 'Фтор'),
@@ -75,3 +73,28 @@ values (1, 304, 4290.093, 2574.43),
        (3, 1819, 27.774, 17536.42),
        (3, 410, 1858.705, 1108.56),
        (3, 349, 0.003, 369.52);
+
+INSERT INTO SFI (`id_substance`, `sfi`)
+values (1819, 75);
+
+INSERT INTO RFC (`id_substance`, `rfc`)
+values (410, 1),
+       (304, 0.04),
+       (343, 0.8),
+       (349, 0.0002),
+       (337, 0.003);
+
+INSERT INTO OBJECTS_LAB3_KONCEROGEN (`id_object`, `id_substance`, `concentration`)
+values (3, 1819, 10.46);
+
+INSERT INTO OBJ_LAB3_NOT_KONCEROGEN (`id_object`, `id_substance`, `concentration`)
+values (1, 304, 411.8),
+       (1, 343, 567),
+       (1, 337, 16.22),
+       (2, 410, 570.84),
+       (2, 337, 0.98),
+       (2, 304, 378.23),
+       (3, 410, 492.31),
+       (3, 349, 0.023);
+
+
