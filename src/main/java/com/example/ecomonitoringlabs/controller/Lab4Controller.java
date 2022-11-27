@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Log4j2
-@RequestMapping("/lab3")
-public class Lab3Controller {
+@RequestMapping("/lab4")
+public class Lab4Controller {
 
     @Autowired
     private ObjectNotKoncerogenService notKoncerogenService;
@@ -22,17 +22,17 @@ public class Lab3Controller {
 
     @GetMapping("/list")
     public String findAllNotKoncerogen(Model model) {
-        model.addAttribute("objects", notKoncerogenService.findAllPollution());
+        model.addAttribute("objects", notKoncerogenService.findAllRisk());
         model.addAttribute("name", "Неканцерогенні забруднювачі");
         model.addAttribute("type", "not koncerogen");
-        return "lab3";
+        return "lab4";
     }
 
     @GetMapping("/list/concerogens")
     public String findAllKoncerogen(Model model) {
-        model.addAttribute("objects", koncerogenService.findAllPollution());
+        model.addAttribute("objects", koncerogenService.findAllRisk());
         model.addAttribute("name", "Канцерогенні забруднювачі");
         model.addAttribute("type", "koncerogen");
-        return "lab3";
+        return "lab4";
     }
 }

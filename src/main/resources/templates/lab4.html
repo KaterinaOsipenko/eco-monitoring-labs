@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab4</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container py-3 my-3">
+    <a class="btn btn-dark" href="http://localhost:8080" role="button">Back</a>
+    <div class="btn-group" role="group" style="margin-bottom: 3%; margin-left: 40%;">
+        <div th:if="${type.equals('not koncerogen')}">
+            <a class="btn btn-dark active" href="/lab4/list" role="button">Неканцерогени</a>
+            <a class="btn btn-light" href="/lab4/list/concerogens" role="button">Канцерогени</a>
+        </div>
+        <div th:if="${type.equals('koncerogen')}">
+            <a class="btn btn-light" href="/lab4/list" role="button">Неканцерогени</a>
+            <a class="btn btn-dark active" href="/lab4/list/concerogens" role="button">Канцерогени</a>
+        </div>
+    </div>
+    <p class="align-content-center" style="text-align: center" th:text="${name}"></p>
+    <span class="align-content-center" style="text-align: center">в Київській області за 2020 рік</span>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>№ з/п</th>
+            <th>Назва об'єкту</th>
+            <th>Назва забруднюючої речовини</th>
+            <th>Концентрація</th>
+            <th>Коефіцієнт ризику</th>
+            <th>Висновок</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="obj : ${objects}">
+            <td th:text="${obj.id}"></td>
+            <td th:text="${obj.object.name}"></td>
+            <td th:text="${obj.substance.name}"></td>
+            <td th:text="${obj.concentration}"></td>
+            <td th:text="${obj.risk}"></td>
+            <div th:if="${obj.risk < 0.1}">
+                <td class="bg-success">Мінімальний ризик</td>
+            </div>
+            <div th:if="${obj.risk >= 0.1 && obj.risk <= 0.19}">
+                <td class="bg-info">Граничні хронічні ефекти</td>
+            </div>
+            <div th:if="${obj.risk >= 0.2 && obj.risk <= 0.59}">
+                <td class="bg-danger">Важкі хронічні ефекти</td>
+            </div>
+            <div th:if="${obj.risk >= 0.6 && obj.risk <= 0.89}">
+                <td class="bg-danger">Важкі гострі ефекти</td>
+            </div>
+            <div th:if="${obj.risk >= 0.9 && obj.risk <= 1.0}">
+                <td class="bg-danger">Смертельні ефекти</td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

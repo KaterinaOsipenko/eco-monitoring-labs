@@ -18,14 +18,42 @@ public class ObjectKoncerogenService {
     private final static int EF = 350;
     private final static int ED = 30;
     private final static int BW = 70;
+    private final static int ED_RISK = 70;
     private final static int AT = 70;
-
+    private final static int EF_RISK = 365;
     private final static int POP = 300000;
+
+    private final static double OSF = 0.84;
+    private final static double IR = 0.4;
+
+    private final static int K = 100;
+
+    private final static int AT_RISK = 70 * 365 * 365;
 
     @Autowired
     private ObjectKoncerogenRepository objectKoncerogenRepository;
 
-    public List<Object_Koncerogen> findAll() {
+    public List<Object_Koncerogen> findAllRisk() {
+        List<Object_Koncerogen> all = objectKoncerogenRepository.findAll();
+        for (Object_Koncerogen obj : all) {
+            obj.setRisk(caclRisk(obj));
+        }
+        return all;
+    }
+
+    private double caclRisk(Object_Koncerogen obj) {
+        return 1 - Math.exp(((Math.log(OSF) / calcClim(obj)) + (Math.log(OSF) % calcClim(obj))) * calcLadd(obj));
+    }
+
+    private double calcLadd(Object_Koncerogen obj) {
+        return obj.getConcentration() * IR * EF_RISK * ((ED_RISK / BW) + (ED_RISK % BW)) * AT_RISK;
+    }
+
+    private double calcClim(Object_Koncerogen obj) {
+        return obj.getSubstance().getGdk().getMax_gdk() * K;
+    }
+
+    public List<Object_Koncerogen> findAllPollution() {
         List<Object_Koncerogen> all = objectKoncerogenRepository.findAll();
         for (Object_Koncerogen obj : all) {
             BigDecimal value = BigDecimal.valueOf(calcCR(obj) * POP / 1000000);

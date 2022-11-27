@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
-@Table(name = "OBJ_LAB3_NOT_KONCEROGEN")
+@Table(name = "OBJ_NOT_KONCEROGEN")
 public class Object_Not_Koncerogen {
 
     @Id
@@ -26,4 +26,6 @@ public class Object_Not_Koncerogen {
     private BigDecimal hq;
 
     private int year;
+
+    private double risk;
 }

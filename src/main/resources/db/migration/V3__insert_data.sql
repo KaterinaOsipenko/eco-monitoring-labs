@@ -84,10 +84,10 @@ values (410, 1),
        (349, 0.0002),
        (337, 0.003);
 
-INSERT INTO OBJECTS_LAB3_KONCEROGEN (`id_object`, `id_substance`, `concentration`)
+INSERT INTO OBJECTS_KONCEROGEN (`id_object`, `id_substance`, `concentration`)
 values (3, 1819, 10.46);
 
-INSERT INTO OBJ_LAB3_NOT_KONCEROGEN (`id_object`, `id_substance`, `concentration`)
+INSERT INTO OBJ_NOT_KONCEROGEN (`id_object`, `id_substance`, `concentration`)
 values (1, 304, 411.8),
        (1, 343, 567),
        (1, 337, 16.22),
@@ -96,5 +96,7 @@ values (1, 304, 411.8),
        (2, 304, 378.23),
        (3, 410, 492.31),
        (3, 349, 0.023);
+
+
 
 

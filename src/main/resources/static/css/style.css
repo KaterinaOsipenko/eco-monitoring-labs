@@ -36,9 +36,8 @@ html {
     font-size: 2rem;
 }
 
-.btn-lab1, .btn-lab2 {
-    padding: .5rem;
-    margin-left: 20rem;
-    width: 40%;
+.btn-lab {
+    padding: 0.5rem 2rem;
+    width: 70%;
     color: deeppink;
 }
