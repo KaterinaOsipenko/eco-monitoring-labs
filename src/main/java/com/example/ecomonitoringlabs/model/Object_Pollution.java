@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
-@Table(name = "OBJECTS_KONCEROGEN")
-public class Object_Koncerogen {
+@Table(name = "OBJECTS_POLLUTION")
+public class Object_Pollution {
 
     @Id
     private int id;
@@ -27,8 +27,6 @@ public class Object_Koncerogen {
 
     private double amount_of_emissions;
 
-    private BigDecimal pcr;
-
-    private double risk;
-
+    private BigDecimal loss;
 }
+

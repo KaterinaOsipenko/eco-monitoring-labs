@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class ObjectKoncerogenService {
     private final static int TOUT = 8;
+    private final static int T = 8;
     private final static int TIN = 16;
     private final static double VOUT = 1.4;
     private final static double VIN = 0.63;
@@ -46,7 +47,7 @@ public class ObjectKoncerogenService {
     }
 
     private double calcLadd(Object_Koncerogen obj) {
-        return obj.getConcentration() * IR * EF_RISK * ((ED_RISK / BW) + (ED_RISK % BW)) * AT_RISK;
+        return obj.getConcentration() * IR * EF_RISK * ((ED_RISK / BW)) * AT_RISK;
     }
 
     private double calcClim(Object_Koncerogen obj) {

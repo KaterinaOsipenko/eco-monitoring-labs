@@ -23,9 +23,12 @@ public class Object_Not_Koncerogen {
 
     private double concentration;
 
-    private BigDecimal hq;
-
     private int year;
 
+    private double amount_of_emissions;
+
+    private BigDecimal hq;
+
     private double risk;
+
 }

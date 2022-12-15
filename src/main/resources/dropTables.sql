@@ -1,4 +1,5 @@
 drop table flyway_schema_history;
+drop table OBJECTS_POLLUTION;
 drop table objects_lab2;
 drop table objects_lab1;
 drop table gdk;

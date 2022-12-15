@@ -112,3 +112,22 @@ CREATE TABLE IF NOT EXISTS OBJ_NOT_KONCEROGEN
         REFERENCES OBJECTS (id)
         ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS OBJECTS_POLLUTION
+(
+    id                  INT AUTO_INCREMENT PRIMARY KEY,
+    id_object           INT,
+    id_substance        INT,
+    amount_of_emissions DOUBLE,
+    concentration       DOUBLE,
+    loss                DOUBLE DEFAULT 0,
+    year                INT    DEFAULT 2020,
+    FOREIGN KEY (id_substance)
+        REFERENCES SUBSTANCE (id),
+    FOREIGN KEY (id_object)
+        REFERENCES OBJECTS (id)
+        ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+
